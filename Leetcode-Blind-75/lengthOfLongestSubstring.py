@@ -32,5 +32,24 @@ start 2
 used -> p 0 
         w 2
         k 3 
+
+# approach 2 using Set
+class Solution:
+    def lengthLongestSubstring(self,s:str)-> int:
+        myset=set()
+        l=0
+        res=0
+
+        for r in range(len(s)):
+            while s[r] in myset :
+                myset.remove(s[l])
+                l+=1
+            myset.add(s[r])
+            res= max(res,r-l+1)
+        return res
+
+myObj= Solution()
+print(myObj.lengthLongestSubstring("abcabcbb"))
+
   
 '''
